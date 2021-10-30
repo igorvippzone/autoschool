@@ -3,10 +3,10 @@
 *::before {
   box-sizing: border-box;
 }
-ul{
+ul {
   list-style: none;
 }
-a{
+a {
   text-decoration: none;
   color: inherit;
 }
@@ -24,78 +24,101 @@ body {
   width: 100%;
   margin: 0 auto;
   padding: 0 30px;
-  /* position: relative;
-  height: 100%; */
+  position: relative;
+  /* height: 100%; */
 }
-.title{
+.title {
   font-size: 42px;
   color: #000;
   margin: 80px 0;
   text-align: center;
 }
+.description {
+  text-align: center;
+  font-size: 25px;
+  margin-top: -30px;
+  margin-bottom: 30px;
+  color: rgb(100, 100, 100);
+}
 /* Header */
-.top-header__list{
+.top-header__list {
   display: flex;
   align-items: center;
+  margin-top: 10px;
 }
-.container .top-header__list{
-margin: 0 -30px;
-margin-bottom: 20px;
-}
-.top-header__item{
+.top-header__item {
   padding: 0 10px;
 }
-.logo{
-  margin: 0 auto;
+.logo {
+  margin: 0 auto 0 0;
 }
-.logo__img{
-  height: 120px;
-
+.logo__img {
+  height: 80px;
 }
 .vk a svg path,
-.inst a svg{
-
+.inst a svg {
 }
-.phone{
+.phone {
   font-size: 25px;
 }
-.nav{
+.fixed-menu {
+  top: 0;
+  margin: 0 auto;
+  background-color: rgb(240, 240, 240);
+  z-index: 10;
+
+  position: fixed;
+  left: 50%;
+
+  transform: translateX(-50%);
+  max-width: 1080px;
+  width: 100%;
+
+  transition: top 0.5s ease-in-out;
+}
+.nav {
   border-top: 1px solid #000;
   border-bottom: 1px solid #000;
   padding: 30px 0;
   margin-bottom: 40px;
 }
-.nav__list{
+.nav__list {
   display: flex;
-justify-content: space-around;
-
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
-.nav__i{
+.nav__item {
   padding: 5px 10px;
+  transition: all 0.5s;
 }
-.nav__item:hover{
- background-color: rgba(214, 214, 214, 0.815);
+.nav__item:hover {
+  background-color: rgba(143, 143, 143, 0.815);
+  color: #fff;
 }
-.header__content{
+.header__content {
   background-color: #fff;
   padding: 80px;
   border-radius: 30px;
-  background-image: url(../images/header-bg.webp);
+  background-image: url(../images/header-bg.png);
   background-repeat: no-repeat;
   background-position: right bottom;
-  background-size: 400px;
+  background-size: 50%;
+  width: 100%;
 }
-.header__title{
-  font-size: 45px;
+.header__title {
+  /* font-size: clamp(25px, 10*(1vw+1vh)/2, 45px); */
+  font-size: calc(10 * (1vw+1vh) / 2);
+  max-width: 600px;
   /* margin: 40px 0 30px; */
 
   line-height: 1.2;
 }
-.header__description{
+.header__description {
   /* display: block; */
-margin: 30px 0;
+  margin: 30px 0;
+  max-width: 400px;
 }
-.header__btn{
+.header__btn {
   display: inline-block;
   text-transform: uppercase;
   padding: 14px 35px 12px;
@@ -112,10 +135,12 @@ margin: 30px 0;
 /* /news */
 /* *********************************** */
 /* Education */
-.education__list{
+.education__list {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
-.education-cart{
+.education-cart {
   background-color: #fff;
   border-radius: 30px;
   display: flex;
@@ -123,56 +148,156 @@ margin: 30px 0;
   align-items: center;
   justify-content: center;
   padding: 50px;
-  margin: 0 10px;
+  /* margin: 0 10px; */
+  max-width: 350px;
 }
-.education-cart:first-child{
+.education-cart:first-child {
   margin-left: 0;
 }
-.education-cart:last-child{
+.education-cart:last-child {
   margin-right: 0;
 }
-.education-cart__icon{
+.education-cart__icon {
   height: 100px;
 }
-.education-cart__title{
+.education-cart__title {
   font-size: 30px;
   text-align: center;
   margin: 20px 0;
 }
-.education-cart__list{
-list-style: circle;
+.education-cart__list {
+  list-style: circle;
 }
-.education-cart__item{
+.education-cart__item {
   margin-bottom: 10px;
 }
 /* /education */
 /* ********************************** */
 /* Instructors */
-.instructors__description{
-  text-align: center;
-  font-size: 25px;
-  margin-top: -30px;
-  margin-bottom: 30px;
-}
-.instructors-cart__list{
+
+.instructors-cart__list {
   display: flex;
+  flex-wrap: wrap;
 }
-.instructors-cart__item{
-display: flex;
-flex-direction: column;
+.instructors-cart__item {
+  display: flex;
+  flex-direction: column;
 }
-.instructors-cart__img{
+.instructors-cart__img {
   height: 200px;
   border-radius: 50%;
   margin: 0 auto;
 }
-.instructors-cart__title{
+.instructors-cart__title {
   text-align: center;
   font-size: 20px;
 }
-.instructors-cart__description{
+.instructors-cart__description {
   text-align: center;
   font-size: 16px;
   font-weight: 300;
 }
 /* /instructors */
+/* ****************************** */
+/* Faq */
+.faq{
+  position: relative;
+}
+.faq__list{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 32px;
+}
+.faq-cart__img{
+  width: 100%;
+}
+
+
+.popup{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.425);
+  z-index: 100;
+  overflow-y: auto;
+  transition: opacity ease-in-out .3s;
+ 
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.close{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80px;
+  height: 80px;
+  background-color: rgba(0, 0, 0, 0.596);
+}
+
+
+/* /Faq */
+@media (min-width: 1200px) {
+  .header__title {
+    font-size: 60px;
+    max-width: 600px;
+
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 992px) {
+  .container {
+    /* max-width: 960px; */
+    padding: 0 16px;
+  }
+  .fixed-menu {
+    max-width: calc(100%-32px);
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    /* max-width: 720px; */
+    padding: 0 24px;
+  }
+  .fixed-menu {
+    max-width: 1092px;
+  }
+  .header__content {
+    padding: 30px;
+    /* padding-bottom: 100px; */
+
+    background-repeat: no-repeat;
+    /* background-position: r bottom; */
+    background-size: 50%;
+  }
+}
+@media (max-width: 576px) {
+  .container {
+    padding: 0 18px;
+  }
+  .header__content {
+    text-align: center;
+    background-position: center 75%;
+    background-size: 200px;
+  }
+  .header__title {
+    font-size: 25px;
+    max-width: 600px;
+
+    line-height: 1.2;
+  }
+  .header__description {
+    text-align: center;
+    max-width: 100%;
+  }
+  .header__btn {
+    margin-top: 100px;
+  }
+}
