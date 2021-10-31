@@ -1,7 +1,7 @@
 const faq = {
   img: [
     "images/FAQ/faq-1.jpg",
-    "images/FAQ/faq-2.jpg",
+    "images/FAQ/faq-1.jpg",
     "images/FAQ/faq-1.jpg",
     "images/FAQ/faq-1.jpg",
     "images/FAQ/faq-1.jpg",
@@ -21,7 +21,6 @@ faqBtn.forEach((item) => {
       title: faq.title[e],
       description: faq.description[e],
     });
-    modal.open()
-  
+    setTimeout(() => modal.open(), 0);
   });
 });

@@ -129,6 +129,10 @@ body {
   line-height: 1.55;
   border-radius: 30px;
 }
+.vk,
+.inst{
+  width: 50px;
+}
 /* /header */
 /* *********************************** */
 /* News */

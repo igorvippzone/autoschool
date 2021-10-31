@@ -1,6 +1,6 @@
 $.modal = function (options) {
   function _createModal(options) {
-    console.log(options)
+    console.log(options);
     const modal = document.createElement("div");
     modal.classList.add("modal");
     modal.insertAdjacentHTML(
@@ -20,39 +20,27 @@ $.modal = function (options) {
   const ANIMATION_SPEED = 300;
   const $modal = _createModal(options);
   let closing = false;
-  let destroyed = false;
+
 
   const modal = {
     open() {
-      if(destroyed){
-        console.log("destroyed")
-      }
       !closing && $modal.classList.add("open");
-     },
-     close() {
-       closing = true;
-       $modal.classList.remove("open");
-       $modal.classList.add("hide");
-       setTimeout(() => {
-         $modal.classList.remove("hide");
-         closing = false;
-       }, ANIMATION_SPEED);
-     },
-  }
-$modal.addEventListener("click",(event)=>{
-
- 
-     if(event.target.dataset.close){
-modal.close()
-     }
-
- 
-})
-  return Object.assign(modal,{
-    destroy(){
-      $modal.parentNode.removeChild($modal)
-      destroyed=true
+    },
+    close() {
+      closing = true;
+      $modal.classList.remove("open");
+      $modal.classList.add("hide");
+      setTimeout(() => {
+        $modal.classList.remove("hide");
+        $modal.parentNode.removeChild($modal);
+        closing = false;
+      }, ANIMATION_SPEED);
+    },
+  };
+  $modal.addEventListener("click", (event) => {
+    if (event.target.dataset.close) {
+      modal.close();
     }
   });
+  return modal;
 };
-
