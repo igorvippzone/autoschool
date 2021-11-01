@@ -24,3 +24,21 @@ faqBtn.forEach((item) => {
     setTimeout(() => modal.open(), 0);
   });
 });
+
+
+
+const menuBtn = document.querySelector(".menu");
+const nav = document.querySelector(".nav");
+console.log(menuBtn)
+
+menuBtn.addEventListener("click", (e)=>{
+  if(menuBtn.classList.contains('active')){
+  setTimeout(()=>{
+    menuBtn.classList.add("hide")
+  },3000)
+    nav.classList.remove("active")
+menuBtn.classList.remove("active")
+  }else{
+nav.classList.add("active")
+menuBtn.classList.add("active")}
+})
