@@ -1,4 +1,5 @@
 $.modal = function (options) {
+  const body = document.querySelector("body")
   function _createModal(options) {
     console.log(options);
     const modal = document.createElement("div");
@@ -33,6 +34,7 @@ $.modal = function (options) {
       setTimeout(() => {
         $modal.classList.remove("hide");
         $modal.parentNode.removeChild($modal);
+        body.classList.remove("noscroll")
         closing = false;
       }, ANIMATION_SPEED);
     },
