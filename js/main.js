@@ -27,7 +27,7 @@ faqBtn.forEach((item) => {
   });
 });
 
-const menuBtn = document.querySelector("#closer");
+const menuBtn = document.querySelector(".closer");
 const nav = document.querySelector(".nav");
 
 menuBtn.addEventListener("click", (e) => {
@@ -48,16 +48,30 @@ let scrollPrev = 0;
 let heightHeader = header.scrollHeight;
 let isHide = false;
 window.addEventListener("scroll", () => {
-  console.log(scrollPrev);
-  scrollPrev = scrollPrev - scrollY;
-  if (scrollY <= 0) {
-    header.classList.remove("hide");
-  } else {
-    if (scrollPrev >= 15) {
-      header.classList.remove("hide");
-    } else if (scrollPrev <= -30) {
-      header.classList.add("hide");
+  const widthWindow = document.body.clientWidth;
+  if (widthWindow <= 768) {
+    scrollPrev = scrollPrev - scrollY;
+    if (scrollY <= 50) {
+      header.classList.contains("hide") ? header.classList.remove("hide") : "";
+    } else {
+      if (scrollPrev >= 30) {
+        header.classList.remove("hide");
+      } else if (scrollPrev <= -10) {
+        header.classList.add("hide");
+      }
+      scrollPrev = scrollY;
     }
-    scrollPrev = scrollY;
   }
 });
+
+
+// **************************
+function hello(){
+  console.log("hello", this)
+}
+const person = {
+  name: "Igor",
+  age: 27,
+  sayHello: hello,
+  sayHelloWindow: hello.bind(window)
+}

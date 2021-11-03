@@ -25,7 +25,6 @@ body {
   margin: 0 auto;
   padding: 0 30px;
   position: relative;
-  /* height: 100%; */
 }
 .title {
   font-size: 42px;
@@ -48,7 +47,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 10px;
+  margin: 5px 0;
 }
 .top-header__item {
   padding: 0 10px;
@@ -62,22 +61,62 @@ body {
 .menu {
   display: none;
 }
-.menu-icon {
+.closer {
   width: 30px;
   height: 20px;
-  display: flex;
-  flex-flow: column nowrap;
-  /* flex-direction: column; */
-  justify-content: space-between;
+  position: relative;
+  border-bottom: 3px solid black;
+  transition: all 0.5s;
   cursor: pointer;
+  overflow: hidden;
 }
-.menu-icon span {
-  width: 100%;
+.closer::before {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  content: "";
+  display: block;
   height: 3px;
-  border-radius: 1px;
-  background-color: black;
+  background: black;
+  transition: all 0.5s;
+}
+.closer::after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  content: "";
+  display: block;
+  height: 3px;
+  background: black;
+  transition: transform 0.5s, width 2s;
 }
 
+.closer.active {
+  border: 0;
+  height: 30px;
+}
+.closer.active:before {
+  content: "";
+  display: block;
+
+  transform: rotate(45deg);
+  top: 100%;
+  margin-top: -55%;
+  left: 0;
+  margin-left: 0%;
+}
+.closer.active:after {
+  content: "";
+  display: block;
+
+  transform: rotate(-45deg);
+  top: 100%;
+  margin-top: -55%;
+  left: 0;
+  margin-left: 0%;
+}
 .logo {
   margin: 0 auto 0 0;
 }
@@ -93,10 +132,12 @@ body {
 .vk a img,
 .inst a img {
   width: 20px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease-in;
 }
 .vk a img:hover,
 .inst a img:hover {
-  background-color: #00000052;
+  opacity: 1;
 }
 .phone {
   font-size: 20px;
@@ -115,11 +156,12 @@ body {
 }
 .nav__item {
   padding: 5px 10px;
-  transition: all 0.5s;
+
+  opacity: 0.7;
+  transition: opacity 0.3s;
 }
 .nav__item:hover {
-  background-color: rgba(143, 143, 143, 0.815);
-  color: #fff;
+  opacity: 1;
 }
 .header__content {
   background-color: #fff;
@@ -132,15 +174,11 @@ body {
   width: 100%;
 }
 .header__title {
-  /* font-size: clamp(25px, 10*(1vw+1vh)/2, 45px); */
   font-size: calc(10 * (1vw+1vh) / 2);
   max-width: 600px;
-  /* margin: 40px 0 30px; */
-
   line-height: 1.2;
 }
 .header__description {
-  /* display: block; */
   margin: 30px 0;
   max-width: 400px;
 }
@@ -334,59 +372,21 @@ body {
     right: 0;
     left: 0;
     opacity: 1;
-    transition: top .3s ease-in, opacity .5s ease-in;
+    transition: top 0.3s ease-in, opacity 0.3s ease-in;
   }
   .header__inner.hide {
-    top:-100px;
-    opacity:0;
+    top: -80px;
+    opacity: 0;
   }
   .top-header__list {
     margin: 0;
   }
-  /* /header */
-  /* *********************************** */
-  /* News */
-
-  /* /news */
-  /* *********************************** */
-  /* Education */
-
-  /* /education */
-  /* ********************************** */
-  /* Instructors */
-
-  /* /instructors */
-  /* ****************************** */
-  /* Faq */
-
-  /* /faq */
-
   .menu {
     display: block;
     margin: 0 auto 0 0;
     z-index: 1000;
   }
-  .menu span {
-    transition: opacity 0.8s ease-in, transform 0.3s ease-in, width 0.3s ease-in;
-  }
-  .menu.active span {
-    /* width: 100%; */
-    /* transition: opacity 0.3s ease-in, transform 0.3s ease-in, width 0.3s ease-in; */
-  }
-  .menu.active span:nth-child(1) {
-    transform-origin: left;
-    transform: rotate(45deg);
-    width: 24px;
-  }
-  .menu.active span:nth-child(2) {
-    width: 0;
-    opacity: 0;
-  }
-  .menu.active span:nth-child(3) {
-    transform-origin: left;
-    transform: rotate(-45deg);
-    width: 24px;
-  }
+
   .logo {
     margin: 0 0 0 auto;
     padding: 0;
@@ -401,10 +401,10 @@ body {
   .phone {
     font-size: 14px;
   }
-  .education__list {
-    justify-content: center;
+  .vk a img,
+  .inst a img {
+    opacity: 1;
   }
-
   .nav {
     padding-top: 80px;
     margin: 0;
@@ -432,7 +432,6 @@ body {
     transition: transform 0.3s ease-in-out;
   }
   .nav__list {
-    /* height: 100%; */
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -448,26 +447,33 @@ body {
     background-color: rgba(0, 0, 0, 0.541);
     width: 100%;
     text-align: center;
+    opacity: 1;
   }
-  .education__list {
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
+  .header__content {
+    margin-top: 90px;
+    padding: 50px;
   }
+  /* /header */
+  /* *********************************** */
+  /* News */
+
+  /* /news */
+  /* *********************************** */
+  /* Education */
   .education-cart {
     max-width: 100%;
     width: 100%;
   }
 
-  .header__content {
-    margin-top: 90px;
-    padding: 30px;
+  /* /education */
+  /* ********************************** */
+  /* Instructors */
 
+  /* /instructors */
+  /* ****************************** */
+  /* Faq */
 
-    background-repeat: no-repeat;
-    background-size: 50%;
-  }
+  /* /faq */
 }
 @media (max-width: 576px) {
   .container {
@@ -479,13 +485,21 @@ body {
   .logo__img {
     height: 50px;
   }
+  .header__inner.hide {
+    top: -50px;
+  }
   .header__content {
     margin-top: 60px;
     padding: 30px;
-
-
-    
-    background-size: 50%;
+    text-align: center;
+    background-position: center 75%;
+    background-size: 200px;
+  }
+  .header__title {
+    font-size: 25px;
+  }
+  .header__btn {
+    margin-top: 100px;
   }
   /* /header */
   /* *********************************** */
@@ -504,24 +518,6 @@ body {
   /* Faq */
 
   /* /faq */
-  .header__content {
-    text-align: center;
-    background-position: center 75%;
-    background-size: 200px;
-  }
-  .header__title {
-    font-size: 25px;
-    max-width: 600px;
-
-    line-height: 1.2;
-  }
-  .header__description {
-    text-align: center;
-    max-width: 100%;
-  }
-  .header__btn {
-    margin-top: 100px;
-  }
 }
 
 /* Header */
@@ -543,60 +539,3 @@ body {
 /* Faq */
 
 /* /faq */
-
-.closer {
-  width: 30px;
-  height: 20px;
-  position: relative;
-  border-bottom: 3px solid black;
-  transition: all 0.5s;
-  cursor: pointer;
-  overflow: hidden;
-}
-.closer::before {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  content: "";
-  display: block;
-  height: 3px;
-  background: black;
-  transition: all 0.5s;
-}
-.closer::after {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  content: "";
-  display: block;
-  height: 3px;
-  background: black;
-  transition: transform 0.5s, width 2s;
-}
-
-.closer.active {
-  border: 0;
-  height: 30px;
-}
-.closer.active:before {
-  content: "";
-  display: block;
-
-  transform: rotate(45deg);
-  top: 100%;
-  margin-top: -55%;
-  left: 0;
-  margin-left: 0%;
-}
-.closer.active:after {
-  content: "";
-  display: block;
-
-  transform: rotate(-45deg);
-  top: 100%;
-  margin-top: -55%;
-  left: 0;
-  margin-left: 0%;
-}
