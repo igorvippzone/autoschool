@@ -333,10 +333,12 @@ body {
     top: 0;
     right: 0;
     left: 0;
-    transition: top .3s ease-in;
+    opacity: 1;
+    transition: top .3s ease-in, opacity .5s ease-in;
   }
   .header__inner.hide {
-    top:-100px
+    top:-100px;
+    opacity:0;
   }
   .top-header__list {
     margin: 0;

@@ -48,13 +48,16 @@ let scrollPrev = 0;
 let heightHeader = header.scrollHeight;
 let isHide = false;
 window.addEventListener("scroll", () => {
+  console.log(scrollPrev);
   scrollPrev = scrollPrev - scrollY;
-  if (scrollPrev >= 20) {
+  if (scrollY <= 0) {
     header.classList.remove("hide");
-    console.log("hide");
-  } else if (scrollPrev <= -20) {
-    header.classList.add("hide");
-    console.log(scrollPrev);
+  } else {
+    if (scrollPrev >= 15) {
+      header.classList.remove("hide");
+    } else if (scrollPrev <= -30) {
+      header.classList.add("hide");
+    }
+    scrollPrev = scrollY;
   }
-  scrollPrev = scrollY;
 });
